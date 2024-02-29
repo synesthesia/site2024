@@ -1,38 +1,59 @@
-# [Creator's Blog: Hugo Theme](https://github.com/HugoBlox/theme-blog)
+# Synesthesia Website 2024 onwards
 
-[![Screenshot](./.github/preview.png)](https://hugoblox.com/templates/)
+My Hugo-based personal website
 
-The **Creator's Blog** Hugo Theme empowers you to easily create your own _personal blog_ or _build a business around your content_.
+## Status
 
-️**Trusted by 250,000+ researchers, educators, and students.** Highly customizable via the integrated **no-code, block-based website builder**, making every site truly personalized ⭐⭐⭐⭐⭐
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1761afff-7d43-4c65-b513-26c0aa3fc8c0/deploy-status)](https://app.netlify.com/sites/nervous-brahmagupta-ee73b3/deploys)
 
-[![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://hugoblox.com/templates/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/GetResearchDev?label=Follow%20on%20Twitter)](https://twitter.com/GetResearchDev)
+## Licence
 
-Easily write technical content with plain text Markdown, LaTeX math, diagrams, RMarkdown, or Jupyter, and import publications from BibTeX.
+See [LICENSE](LICENSE.md) for details.
 
-[Check out the latest demo](https://hugo-blog-theme.netlify.app/) of what you'll get in less than 10 minutes, or [view the showcase](https://hugoblox.com/creators/).
+### Content 
 
-The integrated [**Hugo Blox**](https://hugoblox.com) website builder and CMS makes it easy to create a beautiful website for free. Edit your site in the CMS (or your favorite editor), generate it with [Hugo](https://github.com/gohugoio/hugo), and deploy with GitHub or Netlify. Customize anything on your site with widgets, light/dark themes, and language packs.
+All content (the [/content](https://github.com/synesthesia/site2024/tree/master/content) subdirectory) is copyright (c) 2001-present Julian Elve and released under the Creative Commons CC [BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence.
 
-- 👉 [**Get Started**](https://hugoblox.com/templates/)
-- 📚 [View the **documentation**](https://docs.hugoblox.com/)
-- 💬 [Chat with the **Hugo Blox Builder community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
-- ⬇️ **Automatically import citations from BibTeX** with the [Hugo Academic CLI](https://github.com/GetRD/academic-file-converter)
-- 🐦 Share your new site with the community: [@GetResearchDev](https://twitter.com/GetResearchDev) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithHugoBlox](https://twitter.com/search?q=%23MadeWithHugoBlox&src=typed_query)
-- 🗳 [Take the survey and help us improve #OpenSource](https://forms.gle/NioD9VhUg7PNmdCAA)
-- 🚀 [Contribute improvements](https://github.com/HugoBlox/hugo-blox-builder/blob/main/CONTRIBUTING.md) or [suggest improvements](https://github.com/HugoBlox/hugo-blox-builder/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://docs.hugoblox.com/) and [Release Notes](https://github.com/HugoBlox/hugo-blox-builder/releases)
+You are free to share and adapt my content provided you comply with the following terms:
 
-## We ask you, humbly, to support this open source movement
+- **Attribution** - You must give appropriate credit (as [defined in the licence](https://creativecommons.org/licenses/by-nc-sa/4.0/)), provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests that I (Julian Elve) endorse you or your use.
 
-Today we ask you to defend the open source independence of the Hugo Blox Builder and themes 🐧
+- **NonCommercial** — You may not use the material for commercial purposes.
 
-We're an open source movement that depends on your support to stay online and thriving, but 99.9% of our creators don't give; they simply look the other way.
+- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the [same license](https://creativecommons.org/licenses/by-nc-sa/4.0/) as the original.
 
-### [❤️ Click here to become a GitHub Sponsor, unlocking awesome perks such as _exclusive academic templates and widgets_](https://hugoblox.com/sponsors/)
+- **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-## Demo credits
+### Code (including HTML, SCSS, scripts and makefiles)
 
-- [Unsplash](https://unsplash.com/) images
+For code license and attribution of third-party elements see [LICENSE](https://github.com/synesthesia/site2019/blob/master/LICENSE.md).
+
+## Required Configuration
+
+The following environment variables are required:
+
+|Variable|Description|
+|----|----|
+| CONTENT_DIR | Directory where micropub posts are uploaded to| 
+|FILENAME_FULL_DATE|set to `true` to prepend micropub post filenames with date|
+|	GIT_TOKEN | Personal Access Token|
+| GIT_BRANCH | Branch name to add micropub posts to (Must already exist)|
+| GITHUB_USER | Username for repo where micropub posts are added to (GitHub)| 
+| GITHUB_REPO | Name of repo where micropub posts are added to (GitHub)| 
+| ME | Your website url (https://domain.tld/)| 
+| MEDIA_DIR | Directory where micropub media is uploaded to| 
+| MICROPUB_KEY | shared secret for authorising Micropub API (for when OAuth2 is not usable) |
+| NETLIFY_BUILD_DEBUG | set to true to provide verbose build logging |
+| TOKEN_ENDPOINT | Endpoint to validate IndieAuth token| 
+
+## Micropub format mapping
+
+|Incoming format /properties|Local content type|Local content sub-type|
+|----|----|----|
+|default|stream|note|
+|has `name`|post|null|
+|has `bookmark-of`|stream|bookmark|
+|has `in-reply-to`|stream|reply|
+|has `like-of`|stream|like|
+||||
+
